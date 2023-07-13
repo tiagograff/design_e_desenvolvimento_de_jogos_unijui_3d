@@ -1,0 +1,172 @@
+[gd_scene load_steps=18 format=3 uid="uid://oasahl2nrl1k"]
+
+[ext_resource type="Script" path="res://personagem.gd" id="1_0gdlu"]
+[ext_resource type="Script" path="res://inimigo.gd" id="2_lflwu"]
+[ext_resource type="PackedScene" uid="uid://dh12hjcf6xxrv" path="res://parede_1.tscn" id="2_yu437"]
+[ext_resource type="Texture2D" uid="uid://bso156ew3lvkp" path="res://zombie_stand.png" id="3_18gn0"]
+[ext_resource type="Texture2D" uid="uid://bxae533fp1fjm" path="res://zombie_walk2.png" id="4_bgi6l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jl3lo"]
+albedo_color = Color(1, 0.282353, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ebbj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfh1t"]
+sky_top_color = Color(0.478431, 0.541176, 0.796078, 1)
+sky_horizon_color = Color(0.670588, 0.482353, 0.25098, 1)
+ground_bottom_color = Color(0.0235294, 0.145098, 0.0313726, 1)
+ground_horizon_color = Color(0.243137, 0.286275, 0.329412, 1)
+sun_angle_max = 192.47
+
+[sub_resource type="Sky" id="Sky_ccymv"]
+sky_material = SubResource("ProceduralSkyMaterial_yfh1t")
+
+[sub_resource type="Environment" id="Environment_71m0o"]
+background_mode = 2
+background_color = Color(0.4, 0.380392, 0.2, 1)
+background_energy_multiplier = 1.14
+sky = SubResource("Sky_ccymv")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.63
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lgvh5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_45ph6"]
+radius = 0.682033
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gr1tj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_18gn0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bgi6l")
+}],
+"loop": true,
+"name": &"andar",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p36sb"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_4bfsn"]
+vertices = PackedVector3Array(-24.5, 0.5, -16.25, -20.5, 0.5, -16.25, -20.25, 0.5, -17.25, -20.25, 0.5, -17.25, -18.25, 0.5, -17, -18, 0.5, -24.5, -20.25, 0.5, -17.25, -18, 0.5, -24.5, -24.5, 0.5, -24.5, -24.5, 0.5, -16.25, -18.25, 0.5, -17, -10, 0.5, -16.25, -9.75, 0.5, -24.5, -18, 0.5, -24.5, 11, 0.5, -6, 11.25, 0.5, -5.25, 16.75, 0.5, -5.25, 17.5, 0.5, -15.75, -9.75, 0.5, -24.5, -10, 0.5, -16.25, -7.75, 0.5, -16, -3, 0.5, -24.5, 17.5, 0.5, -15.75, 18, 0.5, -16, 18, 0.5, -24.5, 11, 0.5, -24.5, -3, 0.5, -24.5, -7.75, 0.5, -16, -7.5, 0.5, -14.5, 4, 0.5, -24.5, -8, 0.5, -14.25, -2, 0.5, -5.5, -1.5, 0.5, -6, -7.5, 0.5, -14.5, 4.75, 0.5, -6, 11, 0.5, -6, 17.5, 0.5, -15.75, 11, 0.5, -24.5, 4, 0.5, -24.5, -7.5, 0.5, -14.5, -7.5, 0.5, -14.5, -1.5, 0.5, -6, 4.75, 0.5, -6, 18, 0.5, -16, 18.75, 0.5, -16, 24.5, 0.5, -16.25, 24.5, 0.5, -24.5, 18, 0.5, -24.5, -20.5, 0.5, -15.75, -20.5, 0.5, -16.25, -24.5, 0.5, -16.25, -19.5, 0.5, -15.25, -20.5, 0.5, -15.75, -24.5, 0.5, -16.25, -24.5, 0.5, -4.75, -8, 0.5, -14.25, -19.5, 0.5, -15.25, -24.5, 0.5, -4.75, -24.5, 0.5, 7, -2.5, 0.5, 7, -2.5, 0.5, -2, -2.5, 0.5, -2, -2, 0.5, -5.5, -8, 0.5, -14.25, 18.5, 0.5, -5.75, 18.5, 0.5, -4.5, 19.25, 0.5, -4.25, 24.5, 0.5, -5, 24.5, 0.5, -16.25, 19.25, 0.5, -15.75, 24.5, 0.5, -16.25, 18.75, 0.5, -16, 19.25, 0.5, -15.75, 19.25, 0.5, -4.25, 18.75, 0.5, 6, 24.5, 0.5, 6.25, 24.5, 0.5, -5, 17.25, 0.5, 2, 17.5, 0.5, -3, 16.75, 0.5, -3.25, 11, 0.5, -4.25, 9.5, 0.5, -4.25, 9.75, 0.5, 2.5, 16.75, 0.5, -5.25, 11.25, 0.5, -5.25, 11, 0.5, -4.25, 16.75, 0.5, -3.25, -0.75, 0.5, 3.5, 5, 0.5, 3.5, 5.25, 0.5, 2.5, 5.25, 0.5, 2.5, 9.75, 0.5, 2.5, 9.5, 0.5, -4.25, 5.25, 0.5, 2.5, 9.5, 0.5, -4.25, -0.5, 0.5, -4.25, -0.75, 0.5, 3.5, 5.25, 0.5, 4.25, 5, 0.5, 3.5, -0.75, 0.5, 3.5, -0.75, 0.5, 7.25, 24.5, 0.5, 6.25, 18.75, 0.5, 6, 18.5, 0.5, 8.25, 24.5, 0.5, 15.25, 17, 0.5, 8.5, 17, 0.5, 4, 5.25, 0.5, 4.25, -0.75, 0.5, 7.25, 4.75, 0.5, 24.5, 11.25, 0.5, 24.5, -0.75, 0.5, 7.25, -1.75, 0.5, 7.5, -1.75, 0.5, 24.5, 4.75, 0.5, 24.5, 24.5, 0.5, 15.25, 18.5, 0.5, 8.25, 17, 0.5, 8.5, 11.25, 0.5, 24.5, 17.75, 0.5, 24.5, 17.75, 0.5, 24.5, 24.5, 0.5, 24.5, 24.5, 0.5, 15.25, -24.5, 0.5, 15.75, -24.5, 0.5, 24.5, -13.25, 0.5, 24.5, -1.75, 0.5, 24.5, -1.75, 0.5, 7.5, -2.5, 0.5, 7, -24.5, 0.5, 7, -24.5, 0.5, 15.75, -13.25, 0.5, 24.5)
+polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 3), PackedInt32Array(9, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(33, 32, 30), PackedInt32Array(30, 32, 31), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 35), PackedInt32Array(38, 35, 34), PackedInt32Array(38, 34, 39), PackedInt32Array(40, 42, 41), PackedInt32Array(44, 43, 45), PackedInt32Array(45, 43, 46), PackedInt32Array(46, 43, 47), PackedInt32Array(50, 49, 48), PackedInt32Array(52, 51, 53), PackedInt32Array(53, 51, 54), PackedInt32Array(56, 55, 57), PackedInt32Array(57, 55, 60), PackedInt32Array(57, 60, 59), PackedInt32Array(57, 59, 58), PackedInt32Array(63, 62, 61), PackedInt32Array(65, 64, 66), PackedInt32Array(66, 64, 67), PackedInt32Array(67, 64, 69), PackedInt32Array(67, 69, 68), PackedInt32Array(72, 71, 70), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 76), PackedInt32Array(78, 77, 79), PackedInt32Array(79, 77, 80), PackedInt32Array(80, 77, 81), PackedInt32Array(81, 77, 82), PackedInt32Array(84, 83, 85), PackedInt32Array(85, 83, 86), PackedInt32Array(89, 88, 87), PackedInt32Array(92, 91, 90), PackedInt32Array(96, 95, 93), PackedInt32Array(93, 95, 94), PackedInt32Array(98, 97, 99), PackedInt32Array(99, 97, 100), PackedInt32Array(102, 101, 103), PackedInt32Array(103, 101, 104), PackedInt32Array(106, 105, 107), PackedInt32Array(107, 105, 108), PackedInt32Array(108, 105, 110), PackedInt32Array(108, 110, 109), PackedInt32Array(112, 111, 113), PackedInt32Array(113, 111, 114), PackedInt32Array(116, 115, 117), PackedInt32Array(117, 115, 119), PackedInt32Array(117, 119, 118), PackedInt32Array(122, 121, 120), PackedInt32Array(125, 124, 123), PackedInt32Array(127, 126, 128), PackedInt32Array(128, 126, 131), PackedInt32Array(128, 131, 130), PackedInt32Array(128, 130, 129)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_t5m2j"]
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hlq8h"]
+size = Vector3(50.7495, 1, 49.9465)
+
+[node name="jogo" type="Node3D"]
+metadata/_edit_vertical_guides_ = [553.0]
+metadata/_edit_horizontal_guides_ = [324.0]
+
+[node name="caixa" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.828109, 0, 0.560567, 0.224646, 0.916188, -0.331864, -0.513584, 0.400749, 0.758704, 0, 1.39313, 0)
+material_override = SubResource("StandardMaterial3D_jl3lo")
+mesh = SubResource("BoxMesh_7ebbj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_71m0o")
+
+[node name="personagem" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.29578)
+script = ExtResource("1_0gdlu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="personagem"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.981732, 0)
+shape = SubResource("CapsuleShape3D_lgvh5")
+
+[node name="Camera3D" type="Camera3D" parent="personagem"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="ray" type="RayCast3D" parent="personagem/Camera3D"]
+target_position = Vector3(0, 0, -100)
+
+[node name="hitbox" type="Area3D" parent="personagem"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="personagem/hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16923, 0)
+shape = SubResource("CylinderShape3D_45ph6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.909272, -0.323367, -0.262026, 0, -0.629565, 0.776948, -0.416201, -0.706458, -0.572446, -16.6601, 6.58411, -0.164665)
+light_color = Color(1, 0.956863, 0.784314, 1)
+shadow_enabled = true
+
+[node name="inimigo" type="CharacterBody3D" parent="." groups=["inimigo"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0601, 0, 14.7915)
+script = ExtResource("2_lflwu")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="inimigo"]
+transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, 0, 1.28165, 0)
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_gr1tj")
+animation = &"andar"
+autoplay = "andar"
+frame_progress = 0.564046
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="inimigo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.97394, 0)
+shape = SubResource("CapsuleShape3D_p36sb")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="inimigo"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_4bfsn")
+
+[node name="chao" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="chao" type="MeshInstance3D" parent="NavigationRegion3D/chao"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_t5m2j")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/chao"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.481213, 0)
+shape = SubResource("BoxShape3D_hlq8h")
+
+[node name="parede1" parent="NavigationRegion3D" instance=ExtResource("2_yu437")]
+
+[node name="parede2" parent="NavigationRegion3D" instance=ExtResource("2_yu437")]
+transform = Transform3D(-0.0171558, 0, -0.999853, 0, 1, 0, 0.999853, 0, -0.0171558, -1.5444, 2.05029, 0.963457)
+
+[node name="parede3" parent="NavigationRegion3D" instance=ExtResource("2_yu437")]
+transform = Transform3D(-0.99519, 0, 0.0979651, 0, 1, 0, -0.0979651, 0, -0.99519, -13.9177, 2.05029, -15.7493)
+
+[node name="parede4" parent="NavigationRegion3D" instance=ExtResource("2_yu437")]
+transform = Transform3D(-0.0781634, 0, -0.996941, 0, 1, 0, 0.996941, 0, -0.0781634, 18.0227, 2.05029, -9.58082)
+
+[node name="parede5" parent="NavigationRegion3D" instance=ExtResource("2_yu437")]
+transform = Transform3D(-0.0781634, 0, -0.996941, 0, 1, 0, 0.996941, 0, -0.0781634, 18.0227, 2.05029, 2.07662)
+
+[node name="parede6" parent="NavigationRegion3D" instance=ExtResource("2_yu437")]
+transform = Transform3D(-0.999817, 0, -0.0191275, 0, 1, 0, 0.0191275, 0, -0.999817, 11.5663, 2.05029, 3.2707)
+
+[node name="gameover" type="Label" parent="."]
+visible = false
+offset_left = 321.0
+offset_top = 205.0
+offset_right = 837.0
+offset_bottom = 332.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 18
+theme_override_font_sizes/font_size = 90
+text = "GAME OVER"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 536.0
+offset_top = 278.0
+offset_right = 587.0
+offset_bottom = 405.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 12
+theme_override_font_sizes/font_size = 60
+text = "+"
+
+[connection signal="body_entered" from="personagem/hitbox" to="personagem" method="_on_hitbox_body_entered"]

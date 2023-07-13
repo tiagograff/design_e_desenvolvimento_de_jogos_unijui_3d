@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0ddapta536cg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35qd0"]
+albedo_color = Color(1, 0.917647, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_pinff"]
+material = SubResource("StandardMaterial3D_35qd0")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="GDScript" id="GDScript_yv8yo"]
+script/source = "extends CPUParticles3D
+
+var t=1.0
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	emitting=true
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	t-=delta
+	if t<=0:
+		queue_free()
+"
+
+[node name="explosao2" type="CPUParticles3D"]
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.83
+mesh = SubResource("SphereMesh_pinff")
+spread = 180.0
+initial_velocity_min = 8.0
+initial_velocity_max = 8.0
+script = SubResource("GDScript_yv8yo")

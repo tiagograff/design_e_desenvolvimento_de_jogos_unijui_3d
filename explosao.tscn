@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://otjgwffhvgkh"]
+
+[ext_resource type="Script" path="res://explosao.gd" id="1_on6bk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7hwu"]
+albedo_color = Color(1, 0.0313726, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6kb0v"]
+material = SubResource("StandardMaterial3D_a7hwu")
+radius = 0.25
+height = 0.5
+radial_segments = 16
+rings = 8
+
+[node name="explosao" type="CPUParticles3D"]
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 0.83
+mesh = SubResource("SphereMesh_6kb0v")
+spread = 180.0
+initial_velocity_min = 8.0
+initial_velocity_max = 8.0
+script = ExtResource("1_on6bk")

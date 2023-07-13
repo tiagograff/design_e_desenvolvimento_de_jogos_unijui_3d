@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dh12hjcf6xxrv"]
+
+[node name="parede1" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76508, 2.05029, -5.11836)
+use_collision = true
+size = Vector3(11.809, 4.452, 0.5)
+
+[node name="janela" type="CSGBox3D" parent="."]
+operation = 2
+size = Vector3(9.33347, 1.09579, 2.14688)
